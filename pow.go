@@ -9,7 +9,8 @@ import (
 var (
 	maxNonce = math.MaxInt64
 )
-const targetBits = 24
+const targetBits = 16
+
 type ProofOfWork struct {
 	block  *Block
 	target *big.Int
@@ -33,6 +34,7 @@ func (pow *ProofOfWork) prepareData(nonce int) []byte {
 	)
 	return data
 }
+
 func (pow *ProofOfWork) Run() (int, []byte) {
 	var hashInt big.Int
 	var hash [32]byte
